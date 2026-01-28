@@ -103,6 +103,8 @@ def render_urdf(urdf_path, use_rt, simulate, disable_self_collision, fix_root, h
         loader.scale = 1.5
     elif "kistar" in urdf_path:
         loader.scale = 1.7
+    else: 
+        loader.scale = 1.3
 
     robot_builder = loader.load_file_as_articulation_builder(urdf_path)
     if disable_self_collision and not simulate:
@@ -129,7 +131,8 @@ def render_urdf(urdf_path, use_rt, simulate, disable_self_collision, fix_root, h
         robot.set_pose(sapien.Pose([0, 0, -0.1]))
     elif "kistar" in urdf_path:
         robot.set_pose(sapien.Pose([0, 0, -0.2]))
-
+    else: 
+        robot.set_pose(sapien.Pose([0, 0, -0.4]))
     # Robot motion
     loop_steps = 300
     for joint in robot.get_active_joints():
