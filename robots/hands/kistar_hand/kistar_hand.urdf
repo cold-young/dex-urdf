@@ -215,8 +215,8 @@
       <origin xyz="0. -0. 0." rpy="0.0000013 0. 0. "/>
       <geometry>
         <mesh filename="meshes/index_basemotor_collisions.obj" scale="1. 1. 1."/>
-      </geometry> -->
-    <!-- </collision> -->
+      </geometry>
+    </collision> -->
   </link>
   <link name="index_link_0">
     <inertial>
@@ -301,12 +301,12 @@
         <mesh filename="meshes/kistar_hand_index_sensor_0_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. 0. -0." rpy="0. 0. 0."/>
       <geometry>
         <mesh filename="meshes/kistar_hand_index_sensor_0_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="kistar_hand_index_sensor_1">
     <visual>
@@ -315,12 +315,12 @@
         <mesh filename="meshes/kistar_hand_index_sensor_1_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
       <geometry>
         <mesh filename="meshes/kistar_hand_index_sensor_1_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="kistar_hand_index_sensor_2">
     <visual>
@@ -329,12 +329,12 @@
         <mesh filename="meshes/kistar_hand_index_sensor_2_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. 0. -0." rpy="0. 0. 0."/>
       <geometry>
         <mesh filename="meshes/kistar_hand_index_sensor_2_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="kistar_hand_middle_sensor_0">
     <visual>
@@ -343,12 +343,12 @@
         <mesh filename="meshes/kistar_hand_middle_sensor_0_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
       <geometry>
         <mesh filename="meshes/kistar_hand_middle_sensor_0_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="kistar_hand_middle_sensor_1">
     <visual>
@@ -357,12 +357,12 @@
         <mesh filename="meshes/kistar_hand_middle_sensor_1_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
       <geometry>
         <mesh filename="meshes/kistar_hand_middle_sensor_1_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="kistar_hand_middle_sensor_2">
     <visual>
@@ -371,12 +371,12 @@
         <mesh filename="meshes/kistar_hand_middle_sensor_2_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
       <geometry>
         <mesh filename="meshes/kistar_hand_middle_sensor_2_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="kistar_hand_ring_sensor_0">
     <visual>
@@ -385,12 +385,12 @@
         <mesh filename="meshes/kistar_hand_ring_sensor_0_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. -0. -0." rpy="0. 0. 0."/>
       <geometry>
         <mesh filename="meshes/kistar_hand_ring_sensor_0_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="kistar_hand_ring_sensor_1">
     <visual>
@@ -399,12 +399,12 @@
         <mesh filename="meshes/kistar_hand_ring_sensor_1_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. -0. 0." rpy="0. 0. 0."/>
       <geometry>
         <mesh filename="meshes/kistar_hand_ring_sensor_1_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="kistar_hand_ring_sensor_2">
     <visual>
@@ -413,12 +413,12 @@
         <mesh filename="meshes/kistar_hand_ring_sensor_2_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. -0. -0." rpy="0. 0. 0."/>
       <geometry>
         <mesh filename="meshes/kistar_hand_ring_sensor_2_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="kistar_hand_thumb_sensor_0">
     <visual>
@@ -427,12 +427,12 @@
         <mesh filename="meshes/kistar_hand_thumb_sensor_0_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
       <geometry>
         <mesh filename="meshes/kistar_hand_thumb_sensor_0_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="kistar_hand_thumb_sensor_1">
     <visual>
@@ -441,12 +441,12 @@
         <mesh filename="meshes/kistar_hand_thumb_sensor_1_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
       <geometry>
         <mesh filename="meshes/kistar_hand_thumb_sensor_1_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="middle_basemotor">
     <inertial>
@@ -460,12 +460,12 @@
         <mesh filename="meshes/middle_basemotor_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
       <geometry>
         <mesh filename="meshes/middle_basemotor_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="middle_link_0">
     <inertial>
@@ -479,12 +479,12 @@
         <mesh filename="meshes/middle_link_0_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
       <geometry>
         <mesh filename="meshes/middle_link_0_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="middle_link_1">
     <inertial>
@@ -571,7 +571,7 @@
     </visual>
     <collision>
       <!-- <origin xyz="0. 0. 0." rpy="0. 0. 45."/> -->
-      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <origin xyz="0. 0. -0.003" rpy="0. 0. 0."/>
       <geometry>
         <!-- <mesh filename="meshes/fr3_hand_collisions.obj" scale="5 1.5 3"/> -->
         <mesh filename="meshes/palm_visuals.obj" scale="1 1 1"/>
@@ -591,12 +591,12 @@
         <mesh filename="meshes/ring_basemotor_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. 0. 0." rpy="-0.0000013 0. 0. "/>
       <geometry>
         <mesh filename="meshes/ring_basemotor_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="ring_link_0">
     <inertial>
@@ -610,12 +610,12 @@
         <mesh filename="meshes/ring_link_0_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
       <geometry>
         <mesh filename="meshes/ring_link_0_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="ring_link_1">
     <inertial>
@@ -686,12 +686,12 @@
         <mesh filename="meshes/thumb_basemotor_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. 0. -0." rpy="0.0000013 0. 0. "/>
       <geometry>
         <mesh filename="meshes/thumb_basemotor_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="thumb_link_0">
     <inertial>
@@ -705,12 +705,12 @@
         <mesh filename="meshes/thumb_link_0_visuals.obj" scale="1. 1. 1."/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0. 0. 0." rpy="-0.0000013 0. 0. "/>
       <geometry>
         <mesh filename="meshes/thumb_link_0_collisions.obj" scale="1. 1. 1."/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <link name="thumb_link_1">
     <inertial>
