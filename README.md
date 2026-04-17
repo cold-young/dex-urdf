@@ -1,6 +1,9 @@
 This repository offers an assortment of high-quality models for dexterous hands and objects. Both of them are in URDF
 format.
 
+  + KISTAR Hand Real Hardware configure (PD gains for sim-to-real!)
+
+
 |   Robot Model   |                                                  Visual[^1]                                                  |                                                    Collision[^2]                                                    |
 |:---------------:|:------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------:|
 |  KISTAR Hand   | [<img src="doc/gallery/kistar_hand.webp" width="400">](robots/hands/kistar_hand/kistar_hand.urdf) | [<img src="doc/gallery/kistar_hand.png" width="400">](robots/hands/kistar_hand/kistar_hand.urdf)  |
