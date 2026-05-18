@@ -2,7 +2,7 @@ This repository offers an assortment of high-quality models for dexterous hands 
 format.
 
   + KISTAR Hand Real Hardware configure (PD gains for sim-to-real!)
-
+  + KISTAR Hand + FR3 Hardware urdf
 
 |   Robot Model   |                                                  Visual[^1]                                                  |                                                    Collision[^2]                                                    |
 |:---------------:|:------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------:|
@@ -18,7 +18,7 @@ format.
 |  Panda Gripper  |    [<img src="doc/gallery/panda_rt.webp" width="400">](robots/hands/panda_gripper/panda_gripper_glb.urdf)    |    [<img src="doc/gallery/panda-collision.png" width="400">](robots/hands/panda_gripper/panda_gripper_glb.urdf)     |
 
 [^1]: Ray tracing animation are rendered in `SAPIEN` using the urdf with `glb` version. Code can be found
-in [generate_urdf_animation_sapien.py](tools/generate_urdf_animation_sapien.py).
+in [generate_urdf_animation_sapien.`py](tools/generate_urdf_animation_sapien.py).
 [^2]: Collision mesh are rendered in `SAPIEN` using the same urdf as the visual. Blue links are modeled using primitives
 while green links are modeled using convex triangle meshes. Code can be found
 in generate_urdf_collision_figure_sapien.py](tools/generate_urdf_collision_figure_sapien.py).
