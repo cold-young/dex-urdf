@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+title: "KISTAR Hand URDF / MJCF Distribution"
+message: "If you use these models in your research, please cite this repository."
+type: software
+authors:
+  - family-names: Lee
+    given-names: Jaesung
+    email: "jay.lee@kist.re.kr"
+    affiliation: Korea Institute of Science and Technology
+contributors:
+  - family-names: Park
+    given-names: Sungwoo
+    affiliation: Korea University / KIST
+abstract: >-
+  URDF and MuJoCo MJCF of KISTAR Hand and KISTAR-SON.
+  Mechanical CAD by Sungwoo Park; URDF/MJCF/STL conversion by Jaesung Lee.
+license: BSD-3-Clause
+repository-code: "https://github.com/JayLee00/KISTAR_URDF"
+keywords:
+  - robotic-hand
+  - dexterous-manipulation
+  - urdf
+  - mujoco
+  - mjcf
+  - kistar-hand

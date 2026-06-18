@@ -25,3 +25,4 @@ typeguard==4.4.4
 typing_extensions==4.15.0
 tyro==1.0.4
 urllib3==2.6.3
+yourdfpy

@@ -29,11 +29,31 @@ URDF Parser Links:
 [SAPIEN](https://sapien.ucsd.edu/),
 [PyBullet](https://pybullet.org/wordpress/)
 
+## KISTAR Hand Family (URDF + MJCF, hardware)
+
+These are the CAD-derived hardware models of the KISTAR Hand family, distributed as URDF + MuJoCo MJCF
+with STL meshes (left/right, plus Franka-bracket variants for `kistar_hand`). The previews below are
+GIF animations + PNG stills rendered directly from the MJCF via [`tools/render_previews.py`](tools/render_previews.py).
+
+> Note: the **simulation-ready USD/OBJ** version of the KISTAR Hand is the `KISTAR Hand` row in the
+> gallery table above; the rows below are the raw hardware URDF/MJCF distribution of the same hand family.
+
+|     Robot Model     |                            Animation                            |                          Still pose                           |   Format    |
+|:-------------------:|:---------------------------------------------------------------:|:-------------------------------------------------------------:|:-----------:|
+| KISTAR Hand (R) | [<img src="doc/kistar_hand_right.gif" width="300">](robots/hands/kistar_hand/kistar_hand_right.urdf) | [<img src="doc/kistar_hand_right.png" width="300">](robots/hands/kistar_hand/kistar_hand_right.urdf) | URDF + MJCF |
+| KISTAR Hand (L) | [<img src="doc/kistar_hand_left.gif" width="300">](robots/hands/kistar_hand/kistar_hand_left.urdf) | [<img src="doc/kistar_hand_left.png" width="300">](robots/hands/kistar_hand/kistar_hand_left.urdf) | URDF + MJCF |
+| KISTAR-SON (R) | [<img src="doc/kistar_son_right.gif" width="300">](robots/hands/kistar_son/kistar_son_right_mockup.urdf) | [<img src="doc/kistar_son_right.png" width="300">](robots/hands/kistar_son/kistar_son_right_mockup.urdf) | URDF + MJCF |
+| KISTAR-SON (L) | [<img src="doc/kistar_son_left.gif" width="300">](robots/hands/kistar_son/kistar_son_left_mockup.urdf) | [<img src="doc/kistar_son_left.png" width="300">](robots/hands/kistar_son/kistar_son_left_mockup.urdf) | URDF + MJCF |
+
+> CAD: **Sungwoo Park** (Korea University / KIST) · URDF / MJCF / STL conversion: **Jaesung Lee** (KIST).
+> License: **BSD-3-Clause**, © Korea Institute of Science and Technology. See `LICENSE_KISTAR` in each model folder.
+
 ## Robot Source
 
 |   Robot Model   |                          Official Website                           |                                                 URDF Source                                                 |                                    CAD Model Source                                    |     License     |
 |:---------------:|:-------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------:|:---------------:|
 |  KISTAR Hand   | [PRIME Lab](https://www.dhwanglab.com/home) | [kistar_ros](https://github.com/KIST-PRIME-Lab/Franka_Dual_Arm_PtoP) |                                          N/A                                           |       BSD       |
+|  KISTAR-SON   | [PRIME Lab](https://www.dhwanglab.com/home) | [KISTAR_URDF](https://github.com/KIST-PRIME-Lab) (CAD: Sungwoo Park · URDF/MJCF: Jaesung Lee, KIST) |                                          N/A                                           |   BSD-3-Clause   |
 |  Allegro Hand   | [Wonik Robotics](https://www.wonikrobotics.com/research-robot-hand) | [allegro_hand_ros](https://github.com/simlabrobotics/allegro_hand_ros/tree/master/allegro_hand_description) |                                          N/A                                           |       BSD       |
 |   Shadow Hand   |        [Shadow Robot Company](https://www.shadowrobot.com/)         |                           [sr_common](https://github.com/shadow-robot/sr_common)                            |                                          N/A                                           |     GPL-3.0     |
 | SCHUNK SVH Hand |                 [SCHUNK](https://schunk.com/us/en)                  |             [schunk_svh_ros_driver](https://github.com/SCHUNK-GmbH-Co-KG/schunk_svh_ros_driver)             |                                          N/A                                           |   Apache-2.0    |
