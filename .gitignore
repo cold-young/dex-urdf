@@ -21,3 +21,5 @@ imgui.ini
 /robots/hands/inspire_hand/inspire_hand_opencad/
 /robots/arms/rm75/opencad/
 .history
+**/.omc
+**/*.usd
