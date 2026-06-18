@@ -1,17 +1,398 @@
 <?xml version="1.0" ?>
-<!--Made by Jaesung Lee from PRIME Lab/ Last update: 2025-08-15-->
-<!--Modified by Jaesung Lee from PRIME Lab/ Last update: 2026-06-01-->
+<!-- =================================================================================== -->
+<!-- |  Franka FR3 arm + KISTAR left hand (with Franka mounting bracket) assembly.      | -->
+<!-- |  Arm: expanded from fr3.urdf.xacro (+yaml configs).                              | -->
+<!-- |  Hand: kistar_hand_left_with_franka_bracket.urdf.                                | -->
+<!-- |  Hand root (franka_bracket_round_link) is fixed to the arm flange (fr3_link8).   | -->
+<!-- |  All meshes copied under ./meshes (arm: visual/*.dae, collision/*.stl;           | -->
+<!-- |  hand: kistar_hand/*.STL).                                                       | -->
+<!-- =================================================================================== -->
+<robot name="fr3_kistar_left">
+  <!-- safety_distance: Minimum safety distance in [m] by which the collision volumes are expanded and which is enforced during robot motions -->
+  <!-- robot_type: the franka robot arm type -->
+  <!-- joint_limits: description of the joint limits that comes from a YAML file. Example definition: ${xacro.load_yaml('$(find franka_description)/robots/fr3/joint_limits.yaml')} -->
+  <!-- kinematics: description of the kinematics that comes from a YAML file. Example definition: ${xacro.load_yaml('$(find franka_description)/robots/fr3/kinematics.yaml')} -->
+  <!-- inertials: description of the inertials that comes from a YAML file. Example definition: ${xacro.load_yaml('$(find franka_description)/robots/fr3/inertials.yaml')} -->
+  <!-- dynamics: description of the dynamics that comes from a YAML file. Example definition: ${xacro.load_yaml('$(find franka_description)/robots/fr3/dynamics.yaml')} -->
+  <link name="base">
+      </link>
+  <joint name="fr3_base_joint" type="fixed">
+    <parent link="base"/>
+    <child link="fr3_link0"/>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+  </joint>
+  <!-- sub-link defining detailed meshes for collision with environment -->
+  <link name="fr3_link0">
+    <visual name="fr3_link0_visual">
+      <geometry>
+        <mesh filename="meshes/visual/link0.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link0_collision">
+      <geometry>
+        <mesh filename="meshes/collision/link0.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0172 0.0004 0.0745"/>
+      <mass value="2.3966"/>
+      <inertia ixx="0.009" ixy="0.0" ixz="0.002" iyy="0.0115" iyz="0.0" izz="0.0085"/>
+    </inertial>
+  </link>
+  <link name="fr3_link0_accelerometer_top">
+      </link>
+  <joint name="fr3_link0_accelerometer_top_joint" type="fixed">
+    <origin rpy="3.1416 0.0 0.0" xyz="-0.017402 -0.007872 0.04715"/>
+    <parent link="fr3_link0"/>
+    <child link="fr3_link0_accelerometer_top"/>
+  </joint>
+  <link name="fr3_link0_accelerometer_bottom">
+      </link>
+  <joint name="fr3_link0_accelerometer_bottom_joint" type="fixed">
+    <origin rpy="0.0 0.0 -1.5708" xyz="-0.019739 0.0015506 0.05075"/>
+    <parent link="fr3_link0"/>
+    <child link="fr3_link0_accelerometer_bottom"/>
+  </joint>
+  <!-- sub-link defining detailed meshes for collision with environment -->
+  <link name="fr3_link1">
+    <visual name="fr3_link1_visual">
+      <geometry>
+        <mesh filename="meshes/visual/link1.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link1_collision">
+      <geometry>
+        <mesh filename="meshes/collision/link1.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0000004128 -0.0181251324 -0.0386035970"/>
+      <mass value="2.9274653454"/>
+      <inertia ixx="0.023927316485107913" ixy="1.3317903455714081e-05" ixz="-0.00011404774918616684" iyy="0.0224821613275756" iyz="-0.0019950320628240115" izz="0.006350098258530016"/>
+    </inertial>
+  </link>
+  <link name="fr3_link1_accelerometer_top">
+      </link>
+  <joint name="fr3_link1_accelerometer_top_joint" type="fixed">
+    <origin rpy="-1.5708 0.0 3.1416" xyz="0.017402 -0.093352 -0.00787"/>
+    <parent link="fr3_link1"/>
+    <child link="fr3_link1_accelerometer_top"/>
+  </joint>
+  <link name="fr3_link1_accelerometer_bottom">
+      </link>
+  <joint name="fr3_link1_accelerometer_bottom_joint" type="fixed">
+    <origin rpy="-1.5708 1.5708 0.0" xyz="0.01974 -0.08975 0.00155"/>
+    <parent link="fr3_link1"/>
+    <child link="fr3_link1_accelerometer_bottom"/>
+  </joint>
+  <joint name="fr3_joint1" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0.333"/>
+    <parent link="fr3_link0"/>
+    <child link="fr3_link1"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87.0" lower="-2.9007" upper="2.9007" velocity="2.62"/>
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.9007" soft_upper_limit="2.9007"/>
+    <position_based_velocity_limits deceleration_limit="6.0" velocity_offset="0.652"/>
+    <dynamics D="1" K="7000" damping="0.003" friction="0.2" gear_ratio="120.0" motor_inertia="4.206399e-05" mu_coulomb="0" mu_viscous="16"/>
+  </joint>
+  <!-- sub-link defining detailed meshes for collision with environment -->
+  <link name="fr3_link2">
+    <visual name="fr3_link2_visual">
+      <geometry>
+        <mesh filename="meshes/visual/link2.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link2_collision">
+      <geometry>
+        <mesh filename="meshes/collision/link2.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0031828864 -0.0743221644 0.0088146084"/>
+      <mass value="2.9355370338"/>
+      <inertia ixx="0.041938946257609425" ixy="0.00020257331521090626" ixz="0.004077784227179924" iyy="0.02514514885014724" iyz="-0.0042252158006570156" izz="0.06170214472888839"/>
+    </inertial>
+  </link>
+  <link name="fr3_link2_accelerometer_top">
+      </link>
+  <joint name="fr3_link2_accelerometer_top_joint" type="fixed">
+    <origin rpy="1.5708 0.0 3.1416" xyz="0.017403 -0.11715 0.00787"/>
+    <parent link="fr3_link2"/>
+    <child link="fr3_link2_accelerometer_top"/>
+  </joint>
+  <link name="fr3_link2_accelerometer_bottom">
+      </link>
+  <joint name="fr3_link2_accelerometer_bottom_joint" type="fixed">
+    <origin rpy="1.5708 -1.5708 0.0" xyz="0.019737 -0.11875 -0.00155"/>
+    <parent link="fr3_link2"/>
+    <child link="fr3_link2_accelerometer_bottom"/>
+  </joint>
+  <joint name="fr3_joint2" type="revolute">
+    <origin rpy="-1.570796326794897 0 0" xyz="0 0 0"/>
+    <parent link="fr3_link1"/>
+    <child link="fr3_link2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87.0" lower="-1.8361" upper="1.8361" velocity="2.62"/>
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-1.8361" soft_upper_limit="1.8361"/>
+    <position_based_velocity_limits deceleration_limit="2.585" velocity_offset="0.25"/>
+    <dynamics D="1" K="7000" damping="0.003" friction="0.2" gear_ratio="120.0" motor_inertia="4.206399e-05" mu_coulomb="0" mu_viscous="16"/>
+  </joint>
+  <!-- sub-link defining detailed meshes for collision with environment -->
+  <link name="fr3_link3">
+    <visual name="fr3_link3_visual">
+      <geometry>
+        <mesh filename="meshes/visual/link3.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link3_collision">
+      <geometry>
+        <mesh filename="meshes/collision/link3.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0407015686 -0.0048200565 -0.0289730823"/>
+      <mass value="2.2449013699"/>
+      <inertia ixx="0.02410142547240885" ixy="0.002404694559042109" ixz="-0.002856269270114313" iyy="0.01974053266708178" iyz="-0.002104212683891874" izz="0.019044494482244823"/>
+    </inertial>
+  </link>
+  <link name="fr3_link3_accelerometer_top">
+      </link>
+  <joint name="fr3_link3_accelerometer_top_joint" type="fixed">
+    <origin rpy="-1.5708 0.0 0.0" xyz="0.065099 0.077352 -0.00787"/>
+    <parent link="fr3_link3"/>
+    <child link="fr3_link3_accelerometer_top"/>
+  </joint>
+  <link name="fr3_link3_accelerometer_bottom">
+      </link>
+  <joint name="fr3_link3_accelerometer_bottom_joint" type="fixed">
+    <origin rpy="1.5708 1.5708 0.0" xyz="0.062769 0.073756 0.00155"/>
+    <parent link="fr3_link3"/>
+    <child link="fr3_link3_accelerometer_bottom"/>
+  </joint>
+  <joint name="fr3_joint3" type="revolute">
+    <origin rpy="1.570796326794897 0 0" xyz="0 -0.316 0"/>
+    <parent link="fr3_link2"/>
+    <child link="fr3_link3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87.0" lower="-2.9007" upper="2.9007" velocity="2.62"/>
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.9007" soft_upper_limit="2.9007"/>
+    <position_based_velocity_limits deceleration_limit="3.5" velocity_offset="0.2005"/>
+    <dynamics D="1" K="7000" damping="0.003" friction="0.2" gear_ratio="120.0" motor_inertia="3.211626e-05" mu_coulomb="0" mu_viscous="16"/>
+  </joint>
+  <!-- sub-link defining detailed meshes for collision with environment -->
+  <link name="fr3_link4">
+    <visual name="fr3_link4_visual">
+      <geometry>
+        <mesh filename="meshes/visual/link4.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link4_collision">
+      <geometry>
+        <mesh filename="meshes/collision/link4.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0459100965 0.0630492960 -0.0085187868"/>
+      <mass value="2.6155955791"/>
+      <inertia ixx="0.03452998321913202" ixy="0.01322552265982813" ixz="0.01015142998484113" iyy="0.028881621933049058" iyz="-0.0009762833870704552" izz="0.04125471171146641"/>
+    </inertial>
+  </link>
+  <link name="fr3_link4_accelerometer_top">
+      </link>
+  <joint name="fr3_link4_accelerometer_top_joint" type="fixed">
+    <origin rpy="-1.5708 0.0 -3.1416" xyz="-0.0651 0.046252 -0.00787"/>
+    <parent link="fr3_link4"/>
+    <child link="fr3_link4_accelerometer_top"/>
+  </joint>
+  <link name="fr3_link4_accelerometer_bottom">
+      </link>
+  <joint name="fr3_link4_accelerometer_bottom_joint" type="fixed">
+    <origin rpy="-1.5708 1.5708 0.0" xyz="-0.062775 0.049753 0.00155"/>
+    <parent link="fr3_link4"/>
+    <child link="fr3_link4_accelerometer_bottom"/>
+  </joint>
+  <joint name="fr3_joint4" type="revolute">
+    <origin rpy="1.570796326794897 0 0" xyz="0.0825 0 0"/>
+    <parent link="fr3_link3"/>
+    <child link="fr3_link4"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="87.0" lower="-3.077" upper="-0.1169" velocity="2.62"/>
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-3.077" soft_upper_limit="-0.1169"/>
+    <position_based_velocity_limits deceleration_limit="4.0" velocity_offset="0.3542"/>
+    <dynamics D="1" K="7000" damping="0.003" friction="0.2" gear_ratio="120.0" motor_inertia="3.211626e-05" mu_coulomb="0" mu_viscous="16"/>
+  </joint>
+  <!-- sub-link defining detailed meshes for collision with environment -->
+  <link name="fr3_link5">
+    <visual name="fr3_link5_visual">
+      <geometry>
+        <mesh filename="meshes/visual/link5.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link5_collision">
+      <geometry>
+        <mesh filename="meshes/collision/link5.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.0016039605 0.0292536262 -0.0972965990"/>
+      <mass value="2.3271207594"/>
+      <inertia ixx="0.051610278463662895" ixy="-0.005715173387783472" ixz="-0.0035673167625872135" iyy="0.04787729713371481" iyz="0.010673985108535986" izz="0.016423625579357254"/>
+    </inertial>
+  </link>
+  <link name="fr3_link5_accelerometer_top">
+      </link>
+  <joint name="fr3_link5_accelerometer_top_joint" type="fixed">
+    <origin rpy="-1.5708 0.0 0.0" xyz="-0.017363 0.085872 -0.00795"/>
+    <parent link="fr3_link5"/>
+    <child link="fr3_link5_accelerometer_top"/>
+  </joint>
+  <link name="fr3_link5_accelerometer_bottom">
+      </link>
+  <joint name="fr3_link5_accelerometer_bottom_joint" type="fixed">
+    <origin rpy="1.5708 1.5708 0.0" xyz="-0.019742 0.082275 0.00146"/>
+    <parent link="fr3_link5"/>
+    <child link="fr3_link5_accelerometer_bottom"/>
+  </joint>
+  <joint name="fr3_joint5" type="revolute">
+    <origin rpy="-1.570796326794897 0 0" xyz="-0.0825 0.384 0"/>
+    <parent link="fr3_link4"/>
+    <child link="fr3_link5"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="12.0" lower="-2.8763" upper="2.8763" velocity="5.26"/>
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8763" soft_upper_limit="2.8763"/>
+    <position_based_velocity_limits deceleration_limit="17.0" velocity_offset="0.5738"/>
+    <dynamics D="1" K="7000" damping="0.003" friction="0.2" gear_ratio="80.0" motor_inertia="3.211626e-05" mu_coulomb="0" mu_viscous="16"/>
+  </joint>
+  <!-- sub-link defining detailed meshes for collision with environment -->
+  <link name="fr3_link6">
+    <visual name="fr3_link6_visual">
+      <geometry>
+        <mesh filename="meshes/visual/link6.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link6_collision">
+      <geometry>
+        <mesh filename="meshes/collision/link6.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0597131221 -0.0410294666 -0.0101692726"/>
+      <mass value="1.8170376524"/>
+      <inertia ixx="0.005412333594383447" ixy="0.006193456360285834" ixz="0.0014219289306117652" iyy="0.014058329545509979" iyz="-0.0013140753741120031" izz="0.016080817924212554"/>
+    </inertial>
+  </link>
+  <joint name="fr3_joint6" type="revolute">
+    <origin rpy="1.570796326794897 0 0" xyz="0 0 0"/>
+    <parent link="fr3_link5"/>
+    <child link="fr3_link6"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="12.0" lower="0.4398" upper="4.6216" velocity="4.18"/>
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="0.4398" soft_upper_limit="4.6216"/>
+    <position_based_velocity_limits deceleration_limit="5.5" velocity_offset="0.4885"/>
+    <dynamics D="1" K="7000" damping="0.003" friction="0.2" gear_ratio="80.0" motor_inertia="3.211626e-05" mu_coulomb="0" mu_viscous="16"/>
+  </joint>
+  <!-- sub-link defining detailed meshes for collision with environment -->
+  <link name="fr3_link7">
+    <visual name="fr3_link7_visual">
+      <geometry>
+        <mesh filename="meshes/visual/link7.dae"/>
+      </geometry>
+    </visual>
+    <collision name="fr3_link7_collision">
+      <geometry>
+        <mesh filename="meshes/collision/link7.stl"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0045225817 0.0086261921 -0.0161633251"/>
+      <mass value="0.6271432862"/>
+      <inertia ixx="0.00021092389150104718" ixy="-2.433299114461931e-05" ixz="4.564480393778983e-05" iyy="0.00017718568002411474" iyz="8.744070223226438e-05" izz="5.993190599659971e-05"/>
+    </inertial>
+  </link>
+  <joint name="fr3_joint7" type="revolute">
+    <origin rpy="1.570796326794897 0 0" xyz="0.088 0 0"/>
+    <parent link="fr3_link6"/>
+    <child link="fr3_link7"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="12.0" lower="-3.0508" upper="3.0508" velocity="5.26"/>
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-3.0508" soft_upper_limit="3.0508"/>
+    <position_based_velocity_limits deceleration_limit="17.0" velocity_offset="0.4592"/>
+    <dynamics D="1" K="7000" damping="0.003" friction="0.2" gear_ratio="80.0" motor_inertia="3.211626e-05" mu_coulomb="0" mu_viscous="16"/>
+  </joint>
+  <link name="fr3_link8"/>
+  <joint name="fr3_joint8" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.107"/>
+    <parent link="fr3_link7"/>
+    <child link="fr3_link8"/>
+  </joint>
 
+  <!-- CONNECTION JOINT: FR3 flange -> KISTAR left hand (franka bracket) -->
+  <joint name="fr3_to_kistar_left_joint" type="fixed">
+    <origin rpy="0 0 -0.7804" xyz="0 0 0"/>
+    <parent link="fr3_link8"/>
+    <child link="franka_bracket_round_link"/>
+  </joint>
 
-<robot name="kistar_hand_left">
+  <!-- ============================== KISTAR LEFT HAND ============================== -->
+
 
 
 
   <!-- PALM -->
+   <link name="franka_bracket_round_link">
+      <collision>
+        <geometry>
+          <mesh filename="meshes/kistar_hand/franka_bracket_round_link.STL"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.001"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="meshes/kistar_hand/franka_bracket_round_link.STL"/>
+        </geometry>
+        <material name="Black">
+          <color rgba="0.094118 0.094118 0.098039 1"/>
+        </material>
+      </visual>
+    </link>
+
+    <link name="left_hand_base_bracket_15deg_link">
+      <collision>
+        <geometry>
+          <mesh filename="meshes/kistar_hand/left_hand_base_bracket_15deg_link.STL"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.001"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+      </inertial>
+      <visual>
+        <geometry>
+          <mesh filename="meshes/kistar_hand/left_hand_base_bracket_15deg_link.STL"/>
+        </geometry>
+        <material name="Black">
+          <color rgba="0.094118 0.094118 0.098039 1"/>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="franka_bracket_to_left_hand_base_bracket_joint" type="fixed">
+      <origin rpy="0. 0. 0." xyz="0. 0. 0.013"/>
+      <parent link="franka_bracket_round_link"/>
+      <child link="left_hand_base_bracket_15deg_link"/>
+    </joint>
+   
+   
+   
     <link name="left_hand_base_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_base_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_base_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -21,7 +402,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_base_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_base_link.STL" />
         </geometry>
         <material name="Black">
           <color rgba="0.094118 0.094118 0.098039 1" />
@@ -30,11 +411,17 @@
     </link>
 
 
+    <joint name="left_hand_base_bracket_to_left_hand_base_joint" type="fixed">
+      <origin rpy="3.141592 -1.8326 0." xyz="-0.06983 -0.008 0.04366"/>
+      <parent link="left_hand_base_bracket_15deg_link"/>
+      <child link="left_hand_base_link"/>
+    </joint>
+
   <!-- THUMB -->
     <link name="left_hand_thumb_base_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_thumb_base_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_thumb_base_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -44,7 +431,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_thumb_base_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_thumb_base_link.STL" />
         </geometry>
         <material name="Black">
           <color rgba="0.094118 0.094118 0.098039 1" />
@@ -63,7 +450,7 @@
     <link name="left_hand_thumb_0_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_thumb_0_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_thumb_0_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -73,7 +460,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_thumb_0_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_thumb_0_link.STL" />
         </geometry>
         <material name="MetallicRed">
           <color rgba="0.784314 0.062745 0.180392 1" />
@@ -93,7 +480,7 @@
     <link name="left_hand_thumb_1_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_thumb_1_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_thumb_1_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -103,7 +490,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_thumb_1_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_thumb_1_link.STL" />
         </geometry>
         <material name="MetallicRed">
           <color rgba="0.784314 0.062745 0.180392 1" />
@@ -124,7 +511,7 @@
     <link name="left_hand_thumb_2_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_thumb_2_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_thumb_2_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -134,7 +521,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_thumb_2_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_thumb_2_link.STL" />
         </geometry>
         <material name="Black">
           <color rgba="0.094118 0.094118 0.098039 1" />
@@ -155,7 +542,7 @@
     <link name="left_hand_thumb_3_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_thumb_3_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_thumb_3_link.STL" />
         </geometry>
       </collision>
     <inertial>
@@ -164,7 +551,7 @@
       <inertia ixx="0.00073654000" ixy="0." ixz="-0.00002227000" iyy="0.00020117000" iyz="0." izz="0.00071277000" />    </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_thumb_3_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_thumb_3_link.STL" />
         </geometry>
         <material name="MetallicRed">
           <color rgba="0.784314 0.062745 0.180392 1" />
@@ -185,7 +572,7 @@
     <link name="left_hand_thumb_3_tip_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_thumb_3_tip_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_thumb_3_tip_link.STL" />
         </geometry>
       </collision>
     <inertial>
@@ -194,7 +581,7 @@
         <inertia ixx="0.00030378000" ixy="0." ixz="0.00000000000" iyy="0.00030378000" iyz="0." izz="0.00027029000" />    </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_thumb_3_tip_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_thumb_3_tip_link.STL" />
         </geometry>
         <material name="Silicone">
           <color rgba="0.980392 0.976471 0.964706 1" />
@@ -212,7 +599,7 @@
     <link name="left_hand_thumb_pad_0">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -222,7 +609,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
         <material name="Silicone">
           <color rgba="0.980392 0.976471 0.964706 1" />
@@ -240,7 +627,7 @@
     <link name="left_hand_thumb_pad_1">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -250,7 +637,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
         <material name="Silicone">
           <color rgba="0.980392 0.976471 0.964706 1" />
@@ -269,7 +656,7 @@
       <link name="left_hand_index_base_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_finger_base_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_finger_base_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -279,7 +666,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_finger_base_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_finger_base_link.STL" />
         </geometry>
         <material name="Black">
           <color rgba="0.094118 0.094118 0.098039 1" />
@@ -297,7 +684,7 @@
     <link name="left_hand_index_0_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_0_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_0_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -307,7 +694,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_0_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_0_link.STL" />
         </geometry>
         <material name="MetallicRed">
           <color rgba="0.784314 0.062745 0.180392 1" />
@@ -328,7 +715,7 @@
     <link name="left_hand_index_1_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_1_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_1_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -338,7 +725,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_1_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_1_link.STL" />
         </geometry>
         <material name="Black">
           <color rgba="0.094118 0.094118 0.098039 1" />
@@ -359,7 +746,7 @@
     <link name="left_hand_index_2_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_2_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_2_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -369,7 +756,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_2_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_2_link.STL" />
         </geometry>
         <material name="MetallicRed">
           <color rgba="0.784314 0.062745 0.180392 1" />
@@ -390,7 +777,7 @@
     <link name="left_hand_index_2_motor_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_2_motor_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_2_motor_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -400,7 +787,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_2_motor_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_2_motor_link.STL" />
         </geometry>
         <material name="Black">
           <color rgba="0.094118 0.094118 0.098039 1" />
@@ -418,7 +805,7 @@
     <link name="left_hand_index_3_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_3_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_3_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -428,7 +815,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_3_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_3_link.STL" />
         </geometry>
         <material name="MetallicRed">
           <color rgba="0.784314 0.062745 0.180392 1" />
@@ -449,7 +836,7 @@
     <link name="left_hand_index_3_tip_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_3_tip_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_3_tip_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -459,7 +846,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_3_tip_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_3_tip_link.STL" />
         </geometry>
         <material name="Silicone">
           <color rgba="0.980392 0.976471 0.964706 1" />
@@ -476,7 +863,7 @@
     <link name="left_hand_index_pad_0">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -486,7 +873,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
         <material name="Silicone">
           <color rgba="0.980392 0.976471 0.964706 1" />
@@ -504,7 +891,7 @@
     <link name="left_hand_index_pad_1">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -514,7 +901,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
         <material name="Silicone">
           <color rgba="0.980392 0.976471 0.964706 1" />
@@ -532,7 +919,7 @@
     <link name="left_hand_index_pad_2">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -542,7 +929,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
         <material name="Silicone">
           <color rgba="0.980392 0.976471 0.964706 1" />
@@ -562,7 +949,7 @@
     <link name="left_hand_middle_base_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_finger_base_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_finger_base_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -572,7 +959,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_finger_base_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_finger_base_link.STL" />
         </geometry>
         <material name="Black">
           <color rgba="0.094118 0.094118 0.098039 1" />
@@ -590,7 +977,7 @@
     <link name="left_hand_middle_0_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_0_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_0_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -600,7 +987,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_0_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_0_link.STL" />
         </geometry>
         <material name="MetallicRed">
           <color rgba="0.784314 0.062745 0.180392 1" />
@@ -621,7 +1008,7 @@
     <link name="left_hand_middle_1_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_1_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_1_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -631,7 +1018,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_1_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_1_link.STL" />
         </geometry>
         <material name="Black">
           <color rgba="0.094118 0.094118 0.098039 1" />
@@ -652,7 +1039,7 @@
     <link name="left_hand_middle_2_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_2_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_2_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -662,7 +1049,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_2_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_2_link.STL" />
         </geometry>
         <material name="MetallicRed">
           <color rgba="0.784314 0.062745 0.180392 1" />
@@ -683,7 +1070,7 @@
     <link name="left_hand_middle_2_motor_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_2_motor_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_2_motor_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -693,7 +1080,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_2_motor_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_2_motor_link.STL" />
         </geometry>
         <material name="Black">
           <color rgba="0.094118 0.094118 0.098039 1" />
@@ -711,7 +1098,7 @@
     <link name="left_hand_middle_3_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_3_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_3_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -721,7 +1108,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_3_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_3_link.STL" />
         </geometry>
         <material name="MetallicRed">
           <color rgba="0.784314 0.062745 0.180392 1" />
@@ -742,7 +1129,7 @@
     <link name="left_hand_middle_3_tip_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_3_tip_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_3_tip_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -752,7 +1139,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_3_tip_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_3_tip_link.STL" />
         </geometry>
         <material name="Silicone">
           <color rgba="0.980392 0.976471 0.964706 1" />
@@ -769,7 +1156,7 @@
     <link name="left_hand_middle_pad_0">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -779,7 +1166,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
         <material name="Silicone">
           <color rgba="0.980392 0.976471 0.964706 1" />
@@ -797,7 +1184,7 @@
     <link name="left_hand_middle_pad_1">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -807,7 +1194,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
         <material name="Silicone">
           <color rgba="0.980392 0.976471 0.964706 1" />
@@ -825,7 +1212,7 @@
     <link name="left_hand_middle_pad_2">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -835,7 +1222,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
         <material name="Silicone">
           <color rgba="0.980392 0.976471 0.964706 1" />
@@ -855,7 +1242,7 @@
     <link name="left_hand_ring_base_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_finger_base_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_finger_base_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -865,7 +1252,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/left_hand_finger_base_link.STL" />
+          <mesh filename="meshes/kistar_hand/left_hand_finger_base_link.STL" />
         </geometry>
         <material name="Black">
           <color rgba="0.094118 0.094118 0.098039 1" />
@@ -883,7 +1270,7 @@
     <link name="left_hand_ring_0_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_0_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_0_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -893,7 +1280,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_0_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_0_link.STL" />
         </geometry>
         <material name="MetallicRed">
           <color rgba="0.784314 0.062745 0.180392 1" />
@@ -914,7 +1301,7 @@
     <link name="left_hand_ring_1_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_1_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_1_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -924,7 +1311,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_1_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_1_link.STL" />
         </geometry>
         <material name="Black">
           <color rgba="0.094118 0.094118 0.098039 1" />
@@ -945,7 +1332,7 @@
     <link name="left_hand_ring_2_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_2_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_2_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -955,7 +1342,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_2_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_2_link.STL" />
         </geometry>
         <material name="MetallicRed">
           <color rgba="0.784314 0.062745 0.180392 1" />
@@ -976,7 +1363,7 @@
     <link name="left_hand_ring_2_motor_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_2_motor_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_2_motor_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -986,7 +1373,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_2_motor_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_2_motor_link.STL" />
         </geometry>
         <material name="Black">
           <color rgba="0.094118 0.094118 0.098039 1" />
@@ -1004,7 +1391,7 @@
     <link name="left_hand_ring_3_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_3_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_3_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -1014,7 +1401,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_3_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_3_link.STL" />
         </geometry>
         <material name="MetallicRed">
           <color rgba="0.784314 0.062745 0.180392 1" />
@@ -1035,7 +1422,7 @@
     <link name="left_hand_ring_3_tip_link">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_3_tip_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_3_tip_link.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -1045,7 +1432,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/right_hand_finger_3_tip_link.STL" />
+          <mesh filename="meshes/kistar_hand/right_hand_finger_3_tip_link.STL" />
         </geometry>
         <material name="Silicone">
           <color rgba="0.980392 0.976471 0.964706 1" />
@@ -1062,7 +1449,7 @@
     <link name="left_hand_ring_pad_0">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -1072,7 +1459,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
         <material name="Silicone">
           <color rgba="0.980392 0.976471 0.964706 1" />
@@ -1090,7 +1477,7 @@
     <link name="left_hand_ring_pad_1">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -1100,7 +1487,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
         <material name="Silicone">
           <color rgba="0.980392 0.976471 0.964706 1" />
@@ -1118,7 +1505,7 @@
     <link name="left_hand_ring_pad_2">
       <collision>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
       </collision>
       <inertial>
@@ -1128,7 +1515,7 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="01_kistar_hand_stl/pad.STL" />
+          <mesh filename="meshes/kistar_hand/pad.STL" />
         </geometry>
         <material name="Silicone">
           <color rgba="0.980392 0.976471 0.964706 1" />
