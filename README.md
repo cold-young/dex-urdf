@@ -1,12 +1,37 @@
+# Dex-urdf with KISTAR Hand family
 This repository offers an assortment of high-quality models for dexterous hands and objects. Both of them are in URDF
 format.
 
   + KISTAR Hand Real Hardware configure (PD gains for sim-to-real!)
   + KISTAR Hand + FR3 Hardware urdf
 
+# KISTAR Hand Family (URDF + MJCF, hardware)
+
+These are the CAD-derived hardware models of the KISTAR Hand family, distributed as URDF + MuJoCo MJCF
+with STL meshes (left/right, plus Franka-bracket variants for `kistar_hand`). The previews below are
+GIF animations + PNG stills rendered directly from the MJCF via [`tools/render_previews.py`](tools/render_previews.py).
+
+> Note: the **simulation-ready USD/OBJ** version of the KISTAR Hand is the `KISTAR Hand` row in the
+> gallery table above; the rows below are the raw hardware URDF/MJCF distribution of the same hand family.
+
+> CAD: **Sungwoo Park** (Korea University / KIST) · URDF / MJCF / STL conversion: **Jaesung Lee** (KIST).
+> License: **BSD-3-Clause**, © Korea Institute of Science and Technology. See `LICENSE_KISTAR` in each model folder.
+
+
+|     Robot Model     |                            Animation                            |                          Still pose                           |   Format    |
+|:-------------------:|:---------------------------------------------------------------:|:-------------------------------------------------------------:|:-----------:|
+|  KISTAR Hand   | [<img src="doc/gallery/kistar_hand.webp" width="400">](robots/hands/kistar_hand/kistar_hand.urdf) | [<img src="doc/gallery/kistar_hand.png" width="400">](robots/hands/kistar_hand/kistar_hand.urdf)  |URDF|
+| KISTAR Hand (R) | [<img src="doc/kistar_hand_right.gif" width="300">](robots/hands/kistar_hand/kistar_hand_right.urdf) | [<img src="doc/kistar_hand_right.png" width="300">](robots/hands/kistar_hand/kistar_hand_right.urdf) | URDF + MJCF |
+| KISTAR Hand (L) | [<img src="doc/kistar_hand_left.gif" width="300">](robots/hands/kistar_hand/kistar_hand_left.urdf) | [<img src="doc/kistar_hand_left.png" width="300">](robots/hands/kistar_hand/kistar_hand_left.urdf) | URDF + MJCF |
+| KISTAR-SON (R) | [<img src="doc/kistar_son_right.gif" width="300">](robots/hands/kistar_son/kistar_son_right_mockup.urdf) | [<img src="doc/kistar_son_right.png" width="300">](robots/hands/kistar_son/kistar_son_right_mockup.urdf) | URDF + MJCF |
+| KISTAR-SON (L) | [<img src="doc/kistar_son_left.gif" width="300">](robots/hands/kistar_son/kistar_son_left_mockup.urdf) | [<img src="doc/kistar_son_left.png" width="300">](robots/hands/kistar_son/kistar_son_left_mockup.urdf) | URDF + MJCF |
+
+
+
+# Default Robot Hands
+
 |   Robot Model   |                                                  Visual[^1]                                                  |                                                    Collision[^2]                                                    |
 |:---------------:|:------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------:|
-|  KISTAR Hand   | [<img src="doc/gallery/kistar_hand.webp" width="400">](robots/hands/kistar_hand/kistar_hand.urdf) | [<img src="doc/gallery/kistar_hand.png" width="400">](robots/hands/kistar_hand/kistar_hand.urdf)  |
 |  Allegro Hand   | [<img src="doc/gallery/allegro_rt.webp" width="400">](robots/hands/allegro_hand/allegro_hand_right_glb.urdf) | [<img src="doc/gallery/allegro-collision.png" width="400">](robots/hands/allegro_hand/allegro_hand_right_glb.urdf)  |
 |   Shadow Hand   |  [<img src="doc/gallery/shadow_rt.webp" width="400">](robots/hands/shadow_hand/shadow_hand_right_glb.urdf)   |   [<img src="doc/gallery/shadow-collision.png" width="400">](robots/hands/shadow_hand/shadow_hand_right_glb.urdf)   |
 | SCHUNK SVH Hand |  [<img src="doc/gallery/svh_rt.webp" width="400">](robots/hands/schunk_hand/schunk_svh_hand_right_glb.urdf)  | [<img src="doc/gallery/schunk-collision.png" width="400">](robots/hands/schunk_hand/schunk_svh_hand_right_glb.urdf) |
@@ -29,24 +54,6 @@ URDF Parser Links:
 [SAPIEN](https://sapien.ucsd.edu/),
 [PyBullet](https://pybullet.org/wordpress/)
 
-## KISTAR Hand Family (URDF + MJCF, hardware)
-
-These are the CAD-derived hardware models of the KISTAR Hand family, distributed as URDF + MuJoCo MJCF
-with STL meshes (left/right, plus Franka-bracket variants for `kistar_hand`). The previews below are
-GIF animations + PNG stills rendered directly from the MJCF via [`tools/render_previews.py`](tools/render_previews.py).
-
-> Note: the **simulation-ready USD/OBJ** version of the KISTAR Hand is the `KISTAR Hand` row in the
-> gallery table above; the rows below are the raw hardware URDF/MJCF distribution of the same hand family.
-
-|     Robot Model     |                            Animation                            |                          Still pose                           |   Format    |
-|:-------------------:|:---------------------------------------------------------------:|:-------------------------------------------------------------:|:-----------:|
-| KISTAR Hand (R) | [<img src="doc/kistar_hand_right.gif" width="300">](robots/hands/kistar_hand/kistar_hand_right.urdf) | [<img src="doc/kistar_hand_right.png" width="300">](robots/hands/kistar_hand/kistar_hand_right.urdf) | URDF + MJCF |
-| KISTAR Hand (L) | [<img src="doc/kistar_hand_left.gif" width="300">](robots/hands/kistar_hand/kistar_hand_left.urdf) | [<img src="doc/kistar_hand_left.png" width="300">](robots/hands/kistar_hand/kistar_hand_left.urdf) | URDF + MJCF |
-| KISTAR-SON (R) | [<img src="doc/kistar_son_right.gif" width="300">](robots/hands/kistar_son/kistar_son_right_mockup.urdf) | [<img src="doc/kistar_son_right.png" width="300">](robots/hands/kistar_son/kistar_son_right_mockup.urdf) | URDF + MJCF |
-| KISTAR-SON (L) | [<img src="doc/kistar_son_left.gif" width="300">](robots/hands/kistar_son/kistar_son_left_mockup.urdf) | [<img src="doc/kistar_son_left.png" width="300">](robots/hands/kistar_son/kistar_son_left_mockup.urdf) | URDF + MJCF |
-
-> CAD: **Sungwoo Park** (Korea University / KIST) · URDF / MJCF / STL conversion: **Jaesung Lee** (KIST).
-> License: **BSD-3-Clause**, © Korea Institute of Science and Technology. See `LICENSE_KISTAR` in each model folder.
 
 ## Robot Source
 
