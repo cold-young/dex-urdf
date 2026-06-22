@@ -20,6 +20,7 @@ GIF animations + PNG stills rendered directly from the MJCF via [`tools/render_p
 
 |     Robot Model     |                            Animation                            |                          Still pose                           |   Format    |
 |:-------------------:|:---------------------------------------------------------------:|:-------------------------------------------------------------:|:-----------:|
+|  KISTAR Hand_w_paxini  | [<img src="doc/gallery/kistar_hand_right_paxini.webp" width="400">](robots/hands/kistar_hand/kistar_hand_right_paxini.urdf) | [<img src="doc/gallery/kistar_hand_right_paxini.png" width="400">](robots/hands/kistar_hand/kistar_hand_right_paxini.urdf)  |URDF|
 |  KISTAR Hand   | [<img src="doc/gallery/kistar_hand.webp" width="400">](robots/hands/kistar_hand/kistar_hand.urdf) | [<img src="doc/gallery/kistar_hand.png" width="400">](robots/hands/kistar_hand/kistar_hand.urdf)  |URDF|
 | KISTAR Hand (R) | [<img src="doc/kistar_hand_right.gif" width="300">](robots/hands/kistar_hand/kistar_hand_right.urdf) | [<img src="doc/kistar_hand_right.png" width="300">](robots/hands/kistar_hand/kistar_hand_right.urdf) | URDF + MJCF |
 | KISTAR Hand (L) | [<img src="doc/kistar_hand_left.gif" width="300">](robots/hands/kistar_hand/kistar_hand_left.urdf) | [<img src="doc/kistar_hand_left.png" width="300">](robots/hands/kistar_hand/kistar_hand_left.urdf) | URDF + MJCF |
@@ -82,7 +83,7 @@ python -m pip install -r requirements.txt
 ## Test scripts
 ```shell
 ## Robot animation rendering 
-python tools/generate_urdf_animation_sapien.py ../robots/hands/kistar_hand/kistar_hand.urdf --output-video-path output/kistar_hand.mp4 --headless
+python tools/generate_urdf_animation_sapien.py robots/hands/kistar_hand/kistar_hand.urdf --output-video-path output/kistar_hand.mp4 --headless
 
 ## Robot collision mesh rendering
 python tools/generate_urdf_collision_figure_sapien.py robots/hands/kistar_hand/kistar_hand.urdf --output-image-path output/kistar_hand.png --headless
